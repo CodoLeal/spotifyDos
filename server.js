@@ -6,8 +6,8 @@ const PORT = 3000;
 app.use(express.json());
 app.use(express.static(path.join(__dirname, 'public')));
 
-const cancionRoutes = require('./routes/cancionRoutes');
-const usuarioRoutes = require('./routes/usuarioRoutes');
+const cancionRoutes = require('./routes/canciones');
+const usuarioRoutes = require('./routes/usuarios');
 
 app.use('/canciones', cancionRoutes);
 app.use('/usuarios', usuarioRoutes);
