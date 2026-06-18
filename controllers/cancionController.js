@@ -1,5 +1,5 @@
 const db = require('../config/db');
-const Cancion = require('../models/Cancion');
+const Cancion = require('../models/CancionModel');
 
 const listar = (req, res) => {
   db.query('SELECT * FROM canciones', (err, filas) => {
