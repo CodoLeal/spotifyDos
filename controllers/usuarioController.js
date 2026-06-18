@@ -1,0 +1,4 @@
+const db = require('../config/db');
+const Usuario = require('../models/Usuario');
+
+//ME FALTA ESTO NONADAAAAAAAA AJAJAJAJAAJ LOCURA HACHIMICHIMICHI ASHI HA GA SHI MAMBOW MAMBO TINTINTUNTINGITNGI JJAJDSI HUOSFJ
