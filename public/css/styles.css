@@ -1,0 +1,76 @@
+/* public/css/styles.css */
+
+.card-login h2 {
+    color: #ffffff !important;
+}
+
+/* Forzar que el número "2" use el fucsia neón vibrante */
+.card-login h2 span {
+    color: #ff007f !important;
+    text-shadow: 0 0 10px rgba(255, 0, 127, 0.5); /* Un sutil efecto de brillo neón */
+}
+/* ─── Configuración de Base Estilo Cyberpunk Profundo ─── */
+body { 
+    background-color: #14121f; /* El fondo de la pantalla completo, ultra oscuro tirado a morado */
+    color: #ffffff; 
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* ─── La Tarjeta de Login (El contenedor principal de tu foto) ─── */
+.card-login { 
+    background-color: #1f1b2e; /* El gris-morado exacto de los cuadros de tu imagen */
+    border: 1px solid rgba(255, 0, 127, 0.1); /* Un borde casi invisible para que respire */
+    border-radius: 16px; /* Bordes más redondeados y modernos como en los teléfonos de la foto */
+}
+
+/* ─── Los Inputs de Texto (Formulario) ─── */
+.form-control {
+    background-color: #171424 !important; /* Un fondo más oscuro dentro del input para que haga contraste */
+    color: #ffffff !important;
+    border: 1px solid #2d2845 !important; /* El borde gris apagado original */
+    border-radius: 10px;
+    padding: 10px 14px;
+}
+
+/* El destello mágico cuando haces clic para escribir (Manipulación de foco) */
+.form-control:focus { 
+    background-color: #1b182b !important;
+    color: white !important;
+    border-color: #ff007f !important; /* El fucsia/neón brillante de los botones de música */
+    box-shadow: 0 0 12px rgba(255, 0, 127, 0.4) !important; /* Brillo de luz de neón */
+}
+
+/* Las letras pequeñas de "Nombre de usuario" y "Contraseña" */
+.form-label {
+    color: #a39eb9 !important; /* El gris-lavanda claro que se lee perfecto en la oscuridad */
+    letter-spacing: 0.5px;
+}
+
+/* ─── El Botón de Iniciar Sesión (Estilo Reproductor de Música) ─── */
+.btn-spotify { 
+    background: linear-gradient(135deg, #ff007f 0%, #b500ff 100%) !important; /* Degradado del botón central de tu foto */
+    color: white !important;
+    font-weight: 600 !important; 
+    letter-spacing: 0.5px;
+    border: none !important;
+    border-radius: 50px !important; /* Completamente ovalado como el botón de reproducir */
+    padding: 12px 0 !important;
+    transition: all 0.3s ease !important;
+    box-shadow: 0 4px 15px rgba(255, 0, 127, 0.3) !important; /* Sombra con color para efecto luz */
+}
+
+/* Cuando pasas el mouse por encima del botón */
+.btn-spotify:hover { 
+    transform: translateY(-2px); /* Se levanta un milímetro como un botón real */
+    box-shadow: 0 6px 20px rgba(255, 0, 127, 0.6) !important; /* El neón brilla más fuerte */
+    background: linear-gradient(135deg, #ff2a93 0%, #c426ff 100%) !important; /* Un pelo más claro */
+}
+
+/* ─── Mensaje de Error Dinámico (Punto 7 JS) ─── */
+/* Para que combine con la estética y no sea una alerta roja genérica que rompa el diseño */
+.alert-danger {
+    background-color: rgba(255, 0, 76, 0.15) !important;
+    color: #ff4d79 !important;
+    border: 1px solid rgba(255, 0, 76, 0.3) !important;
+    border-radius: 10px;
+}

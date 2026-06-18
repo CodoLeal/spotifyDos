@@ -1,36 +1,44 @@
-const db = require('../config/db'); 
 
-const procesarLogin = async (req, res) => {
-    const { email, password } = req.body;
+const formulario = document.getElementById('loginForm');
+const inputUsername = document.getElementById('username');
+const inputPassword = document.getElementById('password');
+const mensajeError = document.getElementById('mensaje-error');
 
-    if (!email || !password) {
-        return res.status(400).json({ error: 'Por favor, rellena todos los campos.' });
+
+const realizarLogin = async (e) => {
+  e.preventDefault(); 
+
+  mensajeError.textContent = '';
+  mensajeError.classList.add('d-none');
+
+  const username = inputUsername.value.trim();
+  const password = inputPassword.value;
+
+  if (!username || !password) {
+    mensajeError.textContent = 'Completa todos los campos.';
+    mensajeError.classList.remove('d-none');
+    return;
+  }
+
+  try {
+    const respuesta = await fetch('/usuarios/login', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ username, password })
+    });
+
+    if (respuesta.ok) {
+      window.location.href = '/Index.html';
+    } else {
+      const datos = await respuesta.json();
+      mensajeError.textContent = datos.error || 'Credenciales inválidas';
+      mensajeError.classList.remove('d-none');
     }
 
-    try {
-        const [usuarios] = await db.query('SELECT * FROM usuarios WHERE email = ?', [email]);
-
-        if (usuarios.length === 0) {
-            return res.status(401).json({ error: 'El correo electrónico no se encuentra registrado.' });
-        }
-
-        const usuario = usuarios[0];
-
-        if (usuario.password !== password) {
-            return res.status(401).json({ error: 'La contraseña ingresada es incorrecta.' });
-        }
-
-        return res.status(200).json({ 
-            mensaje: 'Inicio de sesión exitoso.',
-            usuario: { id: usuario.id, nombre: usuario.nombre }
-        });
-
-    } catch (error) {
-        console.error('Error en el servidor durante el login:', error);
-        return res.status(500).json({ error: 'Error interno del servidor al procesar el ingreso.' });
-    }
+  } catch (err) {
+    mensajeError.textContent = `Error al conectar: ${err.message}`;
+    mensajeError.classList.remove('d-none');
+  }
 };
 
-module.exports = {
-    procesarLogin
-};
+formulario.addEventListener('submit', realizarLogin);
