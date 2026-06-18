@@ -14,10 +14,41 @@
     <!-- el bootstrap 😴 -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
 
+    <!-- la fuente esa mulish-->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Mulish:ital,wght@0,700;1,700&display=swap" rel="stylesheet">
+
     <style>
         body {
             font-family: mulish;
+            background: radial-gradient(circle at top left, #1f132b 0%, #0a0a0a 80%);
         }
+
+        .navbar,
+        footer.bg-dark {
+            background-color: rgba(10, 5, 15, 0.90);
+            backdrop-filter: blur(12px);
+        }
+
+        .navbar-nav .nav-link {
+            padding: 8px 24px !important;
+            border-radius: 12px;
+            transition: 0.3s ease;
+        }
+
+            .navbar-nav .nav-link:hover {
+                background-color: rgba(255, 255, 255, 0.1);
+            }
+
+        .btn-primary {
+            background-color: #7C3AED;
+            border: none;
+        }
+
+            .btn-primary:hover {
+                background-color: #6b21a8;
+            }
 
         .contenido-principal {
             margin-top: 70px;
@@ -27,15 +58,23 @@
             height: 180px;
             object-fit: cover;
         }
+
+        .card {
+            transition: 0.3s;
+        }
+
+            .card:hover {
+                translate: 0 -8px;
+            }
     </style>
 </head>
 
 <body>
 
     <!-- navbar -->
-    <nav class="navbar bg-dark fixed-top px-4">
+    <nav class="navbar fixed-top px-4">
         <a class="navbar-brand text-white fw-bold" href="#">
-            <i class="bi bi-music-note-beamed me-1"></i>AppdemusicaCreo
+            <i class="bi bi-music-note-beamed me-1"></i>Spotify 2
         </a>
 
         <!-- botones del centro -->
@@ -55,7 +94,7 @@
             </button>
 
             <!-- el bton de la pauta q tira al login -->
-            <a href="/login" class="btn btn-primary btn-sm">
+            <a href="/admin" class="btn btn-primary btn-sm">
                 <!-- icono de candadito -->
                 <i class="bi bi-shield-lock-fill"></i>Administración
             </a>
@@ -64,7 +103,7 @@
 
     <div class="contenido-principal">
 
-        <section class="bg-dark text-white py-5">
+        <section class="text-white py-5">
             <div class="container">
                 <div class="row align-items-center g-4">
 
@@ -105,7 +144,7 @@
 
                 <div class="row g-4">
                     <div class="col-4">
-                        <div class="card h-100 shadow">
+                        <div class="card shadow-lg h-100">
                             <img src="https://placehold.co/400x180/1a0030/9D5FF5?text=nose"
                                  class="card-img-top"
                                  alt="nose" />
@@ -128,7 +167,7 @@
 
                     <!-- SEGUNDA -->
                     <div class="col-4">
-                        <div class="card h-100 shadow">
+                        <div class="card shadow-lg h-100">
                             <img src="https://placehold.co/400x180/1a0030/C084FC?text=ya+nse"
                                  class="card-img-top"
                                  alt="ya nse" />
@@ -151,7 +190,7 @@
 
                     <!-- TERCERA CARD-->
                     <div class="col-4">
-                        <div class="card h-100 shadow">
+                        <div class="card shadow-lg h-100">
                             <img src="https://placehold.co/400x180/1a0030/7C3AED?text=perreo+hijoeputa"
                                  class="card-img-top"
                                  alt="perreo hijoeputa" />
@@ -175,7 +214,7 @@
                 </div>
 
                 <div class="text-center mt-5">
-                    <a href="#" class="btn btn-outline-secondary px-5">
+                    <a href="#" class="btn btn-outline-light px-5">
                         Ver todos los recomendados <i class="bi bi-arrow-right ms-1"></i>
                     </a>
                 </div>
@@ -185,7 +224,7 @@
 
 
         <!-- footer -->
-        <footer class="bg-dark text-white text-center py-3">
+        <footer class="text-white text-center py-3">
             <p class="mb-0">
                 <i class="bi bi-music-note-beamed me-1"></i>
                 <strong>Spotify 2</strong> · EQUIPONOMEACUEROD CMO ERA 2026
