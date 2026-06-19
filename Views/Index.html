@@ -48,6 +48,7 @@
 
             .btn-primary:hover {
                 background-color: #6b21a8;
+                box-shadow: 0 1px 12px rgba(255, 0, 127, 0.6);
             }
 
         .contenido-principal {
@@ -61,11 +62,21 @@
 
         .card {
             transition: 0.3s;
+            background-color: rgba(30, 20, 43, 0.8);
         }
 
             .card:hover {
                 translate: 0 -8px;
             }
+
+        .glowbacan {
+            color: #ff007f !important;
+            text-shadow: 0 0 10px rgba(255, 0, 127, 0.5);
+        }
+
+        .btn-outline-light:hover {
+            box-shadow: 0 1px 10px rgb(190, 190, 190);
+        }
     </style>
 </head>
 
@@ -74,7 +85,7 @@
     <!-- navbar -->
     <nav class="navbar fixed-top px-4">
         <a class="navbar-brand text-white fw-bold" href="#">
-            <i class="bi bi-music-note-beamed me-1"></i>Spotify 2
+            <i class="bi bi-music-note-beamed me-1"></i>Spotify<span class="glowbacan">2</span>
         </a>
 
         <!-- botones del centro -->
@@ -109,7 +120,7 @@
 
                     <div class="col-6">
                         <h1 class="display-4 fw-bold">
-                            Descubre tu proxima cancion favorita!
+                            Descubre tu proxima cancion  <span class="glowbacan display-4">Favorita!</span>
                         </h1>
                         <p class="lead opacity-75 mt-3">
                             Millones de canciones a tu disposicion.
@@ -191,9 +202,9 @@
                     <!-- TERCERA CARD-->
                     <div class="col-4">
                         <div class="card shadow-lg h-100">
-                            <img src="https://placehold.co/400x180/1a0030/7C3AED?text=perreo+hijoeputa"
+                            <img src="https://placehold.co/400x180/1a0030/7C3AED?text=LOL"
                                  class="card-img-top"
-                                 alt="perreo hijoeputa" />
+                                 alt="LOL"/>
                             <div class="card-body">
                                 <span class="badge bg-warning text-dark mb-2">???????</span>
                                 <h5 class="card-title">programacion web</h5>
@@ -227,7 +238,7 @@
         <footer class="text-white text-center py-3">
             <p class="mb-0">
                 <i class="bi bi-music-note-beamed me-1"></i>
-                <strong>Spotify 2</strong> · EQUIPONOMEACUEROD CMO ERA 2026
+                <strong>Spotify 2</strong> - NOVADEV 2026
             </p>
         </footer>
 
