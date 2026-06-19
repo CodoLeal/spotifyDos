@@ -1,3 +1,26 @@
+
+
+Bárbara Granifo
+Qué hice exactamente: Me encargué de diseñar y programar todo el login y definir la estética visual del sitio.
+
+Frontend: Armé el diseño (public/login.html) usando Bootstrap para que sea responsivo, ocupando sus filas y columnas para que todo quede bien centrado.
+
+Diseño Personalizado: Para cambiar el color verde de Spotify, creé un archivo CSS externo (public/css/styles.css) para darle un estilo diferente. Cambié los botones por degradados y configuré los cuadros de texto para que brillen al hacer clic en ellos.
+
+Validación en el login: Programé la lógica del formulario (public/js/login.js). Si el usuario se equivoca en la clave o ingresa un usuario que no existe, aparece una alerta roja ahí mismo avisando del error sin recargar la página. Si todo está bien, lo manda altiro al panel de control.
+
+Backend y Base de Datos: Configuré las rutas (routes/usuarios.js) y el controlador (controllers/auth.controller.js) en el servidor. Programé la lógica para recibir los datos del login, revisar en MySQL si el usuario y la contraseña son correctos, y avisarle a la pantalla si da el acceso o no.
+
+
+
+
+
+
+
+
+
+
+
 Ahora mismo no hay nada hecho, tenemos que repartirnos los roles.
 El proyecto ya está inicializado con [npm init -y]
 El proyecto ya tiene integrado express [npm install express]

@@ -1,1 +1,12 @@
-//como no he hecho aun usuarioController aqui no hay nada aun jajajajajajjajajajsdhasi dewfeu8yw    hqids
+const express = require('express');
+const router = express.Router();
+
+const authController = require('../controllers/auth.controller');
+const usuarioController = require('../controllers/usuarioController');
+
+router.post('/login', authController.procesarLogin);
+
+router.get('/', usuarioController.listarUsuarios);
+router.post('/', usuarioController.crearUsuario);
+
+module.exports = router;
