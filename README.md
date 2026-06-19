@@ -1,26 +1,4 @@
 
-
-Bárbara Granifo
-Qué hice exactamente: Me encargué de diseñar y programar todo el login y definir la estética visual del sitio.
-
-Frontend: Armé el diseño (public/login.html) usando Bootstrap para que sea responsivo, ocupando sus filas y columnas para que todo quede bien centrado.
-
-Diseño Personalizado: Para cambiar el color verde de Spotify, creé un archivo CSS externo (public/css/styles.css) para darle un estilo diferente. Cambié los botones por degradados y configuré los cuadros de texto para que brillen al hacer clic en ellos.
-
-Validación en el login: Programé la lógica del formulario (public/js/login.js). Si el usuario se equivoca en la clave o ingresa un usuario que no existe, aparece una alerta roja ahí mismo avisando del error sin recargar la página. Si todo está bien, lo manda altiro al panel de control.
-
-Backend y Base de Datos: Configuré las rutas (routes/usuarios.js) y el controlador (controllers/auth.controller.js) en el servidor. Programé la lógica para recibir los datos del login, revisar en MySQL si el usuario y la contraseña son correctos, y avisarle a la pantalla si da el acceso o no.
-
-
-
-
-
-
-
-
-
-
-
 Ahora mismo no hay nada hecho, tenemos que repartirnos los roles.
 El proyecto ya está inicializado con [npm init -y]
 El proyecto ya tiene integrado express [npm install express]
@@ -43,10 +21,7 @@ creando los métodos completos para leer, crear, actualizar y eliminar canciones
 Desarrolló y estructuró la vista del Panel de Administración (views/|||||aqui va la pagina de administracion|||||), 
 conectando exitosamente los formularios HTML con los métodos del controlador para reflejar los cambios directamente en phpMyAdmin.
 
-Barbara Granifo (Autenticación & Frontend JS): Desarrolló la estructura visual (Bootstrap) y la lógica de enrutamiento para el sistema de inicio de sesión (controllers/usuarioController.js(?????????).
-Responsable de toda la interactividad y seguridad del lado del cliente, creando el script central (|||||aqui va el archivo js central||||) 
-para validar los formularios de login y del CRUD del panel,
-evitando el envío de campos vacíos y programando alertas dinámicas de confirmación para la eliminación de registros.
+Bárbara Granifo (Autenticación & Frontend JS): Diseñó la interfaz responsiva con Bootstrap y la estética del sitio mediante CSS personalizado (public/css/styles.css). Programó la lógica del servidor para el inicio de sesión (routes/usuarios.js y controllers/auth.controller.js) conectada a MySQL. Además, desarrolló el script central (public/js/login.js) para validar campos vacíos y desplegar alertas de error en pantalla.
 
 Allan Arrey (Vista Pública & Docs): Desarrolló la Landing Page pública o vista de inicio (views/index.html) utilizando Bootstrap, 
 implementando el diseño responsivo, la barra de navegación y el botón de redirección al Login.
