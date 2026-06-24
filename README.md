@@ -26,10 +26,6 @@ El proyecto ya está inicializado con [npm init -y]
 El proyecto ya tiene integrado express [npm install express]
 El proyecto ya tiene integrado mysql2 [npm install mysql2]
 
-Falta:
-Todo
-
-No nada
 
 1. Integrantes del Grupo:
 
@@ -43,7 +39,7 @@ creando los métodos completos para leer, crear, actualizar y eliminar canciones
 Desarrolló y estructuró la vista del Panel de Administración (views/|||||aqui va la pagina de administracion|||||), 
 conectando exitosamente los formularios HTML con los métodos del controlador para reflejar los cambios directamente en phpMyAdmin.
 
-Barbara Granifo (Autenticación & Frontend JS): Desarrolló la estructura visual (Bootstrap) y la lógica de enrutamiento para el sistema de inicio de sesión (controllers/usuarioController.js(?????????).
+Barbara Granifo (Autenticación & Frontend JS): Desarrolló la estructura visual (Bootstrap) y la lógica de enrutamiento para el sistema de inicio de sesión (controllers/usuarioController.js).
 Responsable de toda la interactividad y seguridad del lado del cliente, creando el script central (|||||aqui va el archivo js central||||) 
 para validar los formularios de login y del CRUD del panel,
 evitando el envío de campos vacíos y programando alertas dinámicas de confirmación para la eliminación de registros.
@@ -57,7 +53,7 @@ conexión a BD y ejecución) garantizando el funcionamiento del proyecto desde c
 
 2. Descripcion del Proyecto:
 
-Spotify2(? es una aplicación web perteneciente al area tematica de Entretenimiento (Musica). 
+Spotify2 es una aplicación web perteneciente al area tematica de Entretenimiento Musica. 
 El sistema resuelve la necesidad de gestionar y presentar un catálogo musical digital de forma eficiente pues
 ofrece a los visitantes una vista publica para descubrir albumes recomendados y proporciona al personal de la empresa una
 interfaz de administracion comoda y eficiente para sus tareas diarias.
