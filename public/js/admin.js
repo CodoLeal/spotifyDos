@@ -1,15 +1,32 @@
 const API_URL = '/canciones'; 
 const API_USUARIOS_URL = '/usuarios';
 let listaCanciones = [];
+let listaUsuarios = [];
 
 const modalAgregar = new bootstrap.Modal(document.getElementById('modalAgregar'));
 const modalEditar = new bootstrap.Modal(document.getElementById('modalEditar'));
 const modalAgregarUsuario = new bootstrap.Modal(document.getElementById('modalAgregarUsuario'));
+const modalEditarUsuario = new bootstrap.Modal(document.getElementById('modalEditarUsuario'));
 
 
 document.addEventListener('DOMContentLoaded', () => {
     cargarCanciones();
     cargarUsuarios();
+    
+    document.querySelectorAll('.toggle-password-btn').forEach(boton => {
+        boton.addEventListener('click', () => {
+            const inputId = boton.getAttribute('data-target');
+            const input = document.getElementById(inputId);
+            if (input) {
+                const tipo = input.getAttribute('type') === 'password' ? 'text' : 'password';
+                input.setAttribute('type', tipo);
+                const icono = boton.querySelector('i');
+                if (icono) {
+                    icono.className = tipo === 'password' ? 'bi bi-eye-slash' : 'bi bi-eye';
+                }
+            }
+        });
+    });
 });
 
 document.getElementById('form-agregar').addEventListener('submit', guardarNuevaCancion);
@@ -17,6 +34,8 @@ document.getElementById('form-agregar').addEventListener('submit', guardarNuevaC
 document.getElementById('form-editar').addEventListener('submit', actualizarCancion);
 
 document.getElementById('form-agregar-usuario').addEventListener('submit', guardarNuevoUsuario);
+
+document.getElementById('form-editar-usuario').addEventListener('submit', actualizarUsuario);
 
 document.getElementById('tabla-canciones').addEventListener('click', (e) => {
     const botonEditar = e.target.closest('.btn-accion-editar');
@@ -30,6 +49,21 @@ document.getElementById('tabla-canciones').addEventListener('click', (e) => {
     if (botonEliminar) {
         const id = parseInt(botonEliminar.getAttribute('data-id'));
         eliminarCancion(id);
+    }
+});
+
+document.getElementById('tabla-usuarios').addEventListener('click', (e) => {
+    const botonEditar = e.target.closest('.btn-accion-editar-usuario');
+    const botonEliminar = e.target.closest('.btn-accion-eliminar-usuario');
+
+    if (botonEditar) {
+        const id = parseInt(botonEditar.getAttribute('data-id'));
+        prepararEditarUsuario(id);
+    }
+
+    if (botonEliminar) {
+        const id = parseInt(botonEliminar.getAttribute('data-id'));
+        eliminarUsuario(id);
     }
 });
 
@@ -176,12 +210,12 @@ async function cargarUsuarios() {
         const res = await fetch(API_USUARIOS_URL);
         if (!res.ok) throw new Error('Error al obtener los usuarios');
 
-        const listaUsuarios = await res.json();
+        listaUsuarios = await res.json();
         const tbody = document.getElementById('tabla-usuarios');
         tbody.innerHTML = '';
 
         if (listaUsuarios.length === 0) {
-            tbody.innerHTML = `<tr><td colspan="3" class="text-center text-secondary py-4">No hay usuarios registrados.</td></tr>`;
+            tbody.innerHTML = `<tr><td colspan="4" class="text-center text-secondary py-4">No hay usuarios registrados.</td></tr>`;
             return;
         }
 
@@ -192,8 +226,16 @@ async function cargarUsuarios() {
                     <td class="text-white fw-bold">
                         <i class="bi bi-person-fill me-2 text-secondary"></i>${u.username}
                     </td>
-                    <td class="text-end">
+                    <td>
                         <span class="badge bg-dark border border-secondary text-secondary">Administrador</span>
+                    </td>
+                    <td class="text-end">
+                        <button class="btn btn-outline-warning btn-sm rounded-pill px-3 me-1 btn-accion-editar-usuario" data-id="${u.id}">
+                            <i class="bi bi-pencil-square me-1"></i>Editar
+                        </button>
+                        <button class="btn btn-outline-danger btn-sm rounded-pill px-3 btn-accion-eliminar-usuario" data-id="${u.id}">
+                            <i class="bi bi-trash3-fill me-1"></i>Eliminar
+                        </button>
                     </td>
                 </tr>
             `;
@@ -223,6 +265,10 @@ async function guardarNuevoUsuario(e) {
         if (res.status === 201) {
             modalAgregarUsuario.hide();
             e.target.reset();
+            const passwordInput = document.getElementById('agregar-usuario-password');
+            if (passwordInput) passwordInput.setAttribute('type', 'password');
+            const toggleIcon = document.querySelector('[data-target="agregar-usuario-password"] i');
+            if (toggleIcon) toggleIcon.className = 'bi bi-eye-slash';
             cargarUsuarios();
         } else {
             const data = await res.json();
@@ -231,5 +277,74 @@ async function guardarNuevoUsuario(e) {
     } catch (err) {
         console.error(err);
         alert('Error de red al intentar guardar el usuario.');
+    }
+}
+
+function prepararEditarUsuario(id) {
+    const usuario = listaUsuarios.find(u => u.id === id);
+    if (!usuario) return;
+
+    document.getElementById('editar-usuario-id').value = usuario.id;
+    document.getElementById('editar-usuario-username').value = usuario.username;
+    
+    const passwordInput = document.getElementById('editar-usuario-password');
+    if (passwordInput) {
+        passwordInput.value = '';
+        passwordInput.setAttribute('type', 'password');
+    }
+    const toggleIcon = document.querySelector('[data-target="editar-usuario-password"] i');
+    if (toggleIcon) toggleIcon.className = 'bi bi-eye-slash';
+
+    modalEditarUsuario.show();
+}
+
+async function actualizarUsuario(e) {
+    e.preventDefault();
+    const id = document.getElementById('editar-usuario-id').value;
+    const formData = new FormData(e.target);
+
+    const usuarioEditado = {
+        username: formData.get('username')
+    };
+    
+    const password = formData.get('password');
+    if (password) {
+        usuarioEditado.password = password;
+    }
+
+    try {
+        const res = await fetch(`${API_USUARIOS_URL}/${id}`, {
+            method: 'PUT',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(usuarioEditado)
+        });
+
+        if (res.ok) {
+            modalEditarUsuario.hide();
+            cargarUsuarios();
+        } else {
+            const data = await res.json();
+            alert('Error al modificar: ' + (data.error || 'No se pudo actualizar el usuario.'));
+        }
+    } catch (err) {
+        console.error(err);
+        alert('Error de red al intentar actualizar el usuario.');
+    }
+}
+
+async function eliminarUsuario(id) {
+    if (!confirm('¿Seguro que deseas remover este usuario de la base de datos?')) return;
+
+    try {
+        const res = await fetch(`${API_USUARIOS_URL}/${id}`, { method: 'DELETE' });
+        if (res.ok) {
+            cargarUsuarios();
+        } else {
+            const data = await res.json();
+            alert('Error: ' + (data.error || 'No se pudo eliminar el usuario.'));
+        }
+    } catch (err) {
+        console.error(err);
+        alert('Error de red al intentar eliminar el usuario.');
     }
 }

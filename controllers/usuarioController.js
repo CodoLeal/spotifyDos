@@ -30,7 +30,59 @@ const crearUsuario = (req, res) => {
     );
 };
 
+const editarUsuario = (req, res) => {
+    const { id } = req.params;
+    const { username, password } = req.body;
+
+    if (!username) {
+        return res.status(400).json({ error: 'El nombre de usuario es obligatorio.' });
+    }
+
+    if (password) {
+        db.query(
+            'UPDATE usuarios SET username = ?, password = ? WHERE id = ?',
+            [username, password, id],
+            (err, resultado) => {
+                if (err) {
+                    console.error('Error al editar usuario con contraseña:', err);
+                    return res.status(500).json({ error: 'Error al editar el usuario.' });
+                }
+                return res.status(200).json({ mensaje: 'Usuario actualizado con éxito.' });
+            }
+        );
+    } else {
+        db.query(
+            'UPDATE usuarios SET username = ? WHERE id = ?',
+            [username, id],
+            (err, resultado) => {
+                if (err) {
+                    console.error('Error al editar usuario sin contraseña:', err);
+                    return res.status(500).json({ error: 'Error al editar el usuario.' });
+                }
+                return res.status(200).json({ mensaje: 'Usuario actualizado con éxito.' });
+            }
+        );
+    }
+};
+
+const eliminarUsuario = (req, res) => {
+    const { id } = req.params;
+
+    db.query('DELETE FROM usuarios WHERE id = ?', [id], (err, resultado) => {
+        if (err) {
+            console.error('Error al eliminar usuario:', err);
+            return res.status(500).json({ error: 'Error al eliminar el usuario.' });
+        }
+        if (resultado.affectedRows === 0) {
+            return res.status(404).json({ error: 'Usuario no encontrado.' });
+        }
+        return res.status(200).json({ mensaje: 'Usuario eliminado con éxito.' });
+    });
+};
+
 module.exports = {
     listarUsuarios,
-    crearUsuario
+    crearUsuario,
+    editarUsuario,
+    eliminarUsuario
 };
