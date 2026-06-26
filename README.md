@@ -18,12 +18,12 @@ y protegiendo el acceso al panel mediante middlewares de sesión. Administró el
 
 Vicente Gonzalez (Controladores & CRUD): Encargado de estructurar las rutas del administrador y programar la lógica del negocio en el backend (controllers/cancionController.js), 
 creando los métodos completos para leer, crear, actualizar y eliminar canciones. 
-Desarrolló y estructuró la vista del Panel de Administración (views/|||||aqui va la pagina de administracion|||||), 
+Desarrolló y estructuró la vista del Panel de Administración (public/admin), 
 conectando exitosamente los formularios HTML con los métodos del controlador para reflejar los cambios directamente en phpMyAdmin.
 
 Bárbara Granifo (Autenticación & Frontend JS): Diseñó la interfaz responsiva con Bootstrap y la estética del sitio mediante CSS personalizado (public/css/styles.css). Programó la lógica del servidor para el inicio de sesión (routes/usuarios.js y controllers/auth.controller.js) conectada a MySQL. Además, desarrolló el script central (public/js/login.js) para validar campos vacíos y desplegar alertas de error en pantalla.
 
-Allan Arrey (Vista Pública & Docs): Desarrolló la Landing Page pública o vista de inicio (views/index.html) utilizando Bootstrap, 
+Allan Arrey (Vista Pública & Docs): Desarrolló la Landing Page pública o vista de inicio (public/index.html) utilizando Bootstrap, 
 implementando el diseño responsivo, la barra de navegación y el botón de redirección al Login.
 Fue responsable de redactar íntegramente la documentación del sistema (README.md) 
 y de realizar las pruebas de control de calidad del despliegue (clonación, instalación de dependencias, 
@@ -32,7 +32,7 @@ conexión a BD y ejecución) garantizando el funcionamiento del proyecto desde c
 
 2. Descripcion del Proyecto:
 
-Spotify2(? es una aplicación web perteneciente al area tematica de Entretenimiento (Musica). 
+Spotify2 es una aplicación web perteneciente al area tematica de Entretenimiento (Musica). 
 El sistema resuelve la necesidad de gestionar y presentar un catálogo musical digital de forma eficiente pues
 ofrece a los visitantes una vista publica para descubrir albumes recomendados y proporciona al personal de la empresa una
 interfaz de administracion comoda y eficiente para sus tareas diarias.
@@ -85,7 +85,7 @@ Nombre de la base de datos: spotify2_db
 
 Usuario: root
 
-Contraseña: (vacia no nada)
+Contraseña: (vacia)
 
 
 
@@ -110,10 +110,8 @@ El sistema sigue estrictamente el patrón de arquitectura MVC. A continuación, 
 
 /model/: Archivos encargados de la interaccion directa con MySQL y la ejecucion de consultas SQL.
 
-/public/: Directorio de recursos estáticos accesibles por el navegador (imágenes, CSS y archivos como app.js para el frontend).
-
-/views/: Archivos de interfaz grafica y plantillas HTML, incluyendo la vista publica (index.html) y el panel de administracion.
+/public/: Directorio de recursos estáticos accesibles por el navegador y LandingPage (imágenes, CSS y archivos como app.js para el frontend y index.html).
 
 server.js: Archivo principal ubicado en la raiz del proyecto que inicializa y levanta el servidor web.
 
-database.sql: Script de base de datos listo para importar en phpMyAdmin.
+db.sql: Script de base de datos listo para importar en phpMyAdmin.

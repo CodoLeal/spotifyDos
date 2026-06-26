@@ -1,0 +1,68 @@
+.contenido-principal {
+    margin-top: 90px;
+}
+
+.card-admin {
+    background-color: #1f1b2e;
+    border: 1px solid rgba(255, 0, 127, 0.1);
+    border-radius: 16px;
+}
+
+.btn-spotify {
+    background: linear-gradient(135deg, #ff007f 0%, #b500ff 100%) !important;
+    color: white !important;
+    font-weight: 600 !important;
+    border: none !important;
+    border-radius: 50px !important;
+    transition: all 0.3s ease !important;
+    box-shadow: 0 4px 15px rgba(255, 0, 127, 0.3) !important;
+}
+
+    .btn-spotify:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 6px 20px rgba(255, 0, 127, 0.6) !important;
+        background: linear-gradient(135deg, #ff2a93 0%, #c426ff 100%) !important;
+    }
+
+.table {
+    color: #ffffff !important;
+    border-color: rgba(255, 255, 255, 0.05);
+}
+
+    .table tbody tr {
+        transition: background-color 0.2s ease;
+    }
+
+        .table tbody tr:hover {
+            background-color: rgba(255, 255, 255, 0.03) !important;
+        }
+
+.modal-content {
+    background-color: #1f1b2e;
+    border: 1px solid rgba(255, 0, 127, 0.2);
+    border-radius: 16px;
+}
+
+.modal-header, .modal-footer {
+    border-color: rgba(255, 255, 255, 0.05);
+}
+
+.form-control {
+    background-color: #171424 !important;
+    color: #ffffff !important;
+    border: 1px solid #2d2845 !important;
+    border-radius: 10px;
+    padding: 10px 14px;
+}
+
+    .form-control:focus {
+        background-color: #1b182b !important;
+        color: white !important;
+        border-color: #ff007f !important;
+        box-shadow: 0 0 12px rgba(255, 0, 127, 0.4) !important;
+    }
+
+.form-label {
+    color: #a39eb9 !important;
+    letter-spacing: 0.5px;
+}

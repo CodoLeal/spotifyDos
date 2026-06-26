@@ -7,11 +7,6 @@
     color: #ff007f !important;
     text-shadow: 0 0 10px rgba(255, 0, 127, 0.5); 
 }
-body { 
-    background-color: #14121f; 
-    color: #ffffff; 
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-}
 
 .card-login { 
     background-color: #1f1b2e; 
