@@ -17,13 +17,21 @@
 
 <body>
     <div id="navbar-placeholder"></div>
+      <div class="modal fade" id="modalLogin" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content bg-dark text-white p-4">
+                <h5>Debes iniciar sesión</h5>
+                <p>Inicia sesión en tu cuenta para acceder a tu música y listas favoritas.</p>
+                <a href="/login.html" class="btn btn-primary">Ir a Iniciar Sesión</a>
+                <button type="button" class="btn btn-outline-light w-100" data-bs-dismiss="modal">Seguir explorando</button>
+            </div>
+        </div>
+    </div>
 
     <div class="contenido-principal">
-
         <section class="text-white py-5">
             <div class="container">
                 <div class="row align-items-center g-4">
-
                     <div class="col-6">
                         <h1 class="display-4 fw-bold">
                             Descubre tu proxima cancion <span class="glowbacan display-4">Favorita!</span>
@@ -32,9 +40,8 @@
                             Millones de canciones a tu disposicion.
                         </p>
                         <div class="d-flex gap-3 mt-4">
-                            <a href="#recomendados" class="btn btn-primary btn-lg">
-                                <i class="bi bi-play-circle-fill me-2"></i>Comenzar a escuchar
-                            </a>
+                            <a href="#" class="btn btn-primary btn-lg btn-reproducir">
+                                <i class="bi bi-play-circle-fill me-2"></i>Comenzar a escuchar</a>
                             <a href="#" class="btn btn-outline-light btn-lg btn-protegido">Ver Playlists</a>
                         </div>
                     </div>
@@ -59,7 +66,6 @@
 
         <section id="recomendados" class="py-5">
             <div class="container">
-
                 <div class="text-center mb-5">
                     <h2 class="fw-bold">Recomendados para ti</h2>
                 </div>
@@ -67,14 +73,11 @@
                 <div class="row g-4">
                     <div class="col-4">
                         <div class="card shadow-lg h-100">
-                            <img src="https://i.scdn.co/image/ab67616d0000b27342be808911785ceb13140edc"
-                                 class="card-img-top" alt="nose" />
+                            <img src="https://i.scdn.co/image/ab67616d0000b27342be808911785ceb13140edc" class="card-img-top" alt="nose" />
                             <div class="card-body">
                                 <span class="badge bg-primary mb-2">Metal</span>
                                 <h5 class="card-title">Tornado of Souls</h5>
                                 <p class="card-text text-secondary" style="font-size:0.85rem;">Megadeth</p>
-                                <p class="card-text" style="font-size:0.85rem;">
-                                </p>
                             </div>
                             <div class="card-footer d-flex justify-content-between align-items-center">
                                 <small class="text-secondary"><i class="bi bi-music-note-list me-1"></i>12 canciones</small>
@@ -87,13 +90,11 @@
 
                     <div class="col-4">
                         <div class="card shadow-lg h-100">
-                            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQg8uZJk26QsmbFtpjBIkT_q0ejnlI1I7sLow&s"
-                                 class="card-img-top" alt="ya nse" />
+                            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQg8uZJk26QsmbFtpjBIkT_q0ejnlI1I7sLow&s" class="card-img-top" alt="ya nse" />
                             <div class="card-body">
                                 <span class="badge bg-danger mb-2">Pop</span>
                                 <h5 class="card-title">Beat it</h5>
                                 <p class="card-text text-secondary" style="font-size:0.85rem;">Michael Jackson</p>
-                                <p class="card-text" style="font-size:0.85rem;"></p>
                             </div>
                             <div class="card-footer d-flex justify-content-between align-items-center">
                                 <small class="text-secondary"><i class="bi bi-music-note-list me-1"></i>10 canciones</small>
@@ -106,14 +107,11 @@
 
                     <div class="col-4">
                         <div class="card shadow-lg h-100">
-                            <img src="https://lonkodev.cl/lonkodev-logo.png"
-                                 class="card-img-top"
-                                 alt="LOL" />
+                            <img src="https://lonkodev.cl/lonkodev-logo.png" class="card-img-top" alt="LOL" />
                             <div class="card-body">
                                 <span class="badge bg-warning text-dark mb-2">Podcast</span>
                                 <h5 class="card-title">Programacion Web</h5>
                                 <p class="card-text text-secondary" style="font-size:0.85rem;">LonkoDev</p>
-                                <p class="card-text" style="font-size:0.85rem;"></p>
                             </div>
                             <div class="card-footer d-flex justify-content-between align-items-center">
                                 <small class="text-secondary"><i class="bi bi-music-note-list me-1"></i>12 episodios</small>
@@ -130,18 +128,15 @@
                         Ver todos los recomendados <i class="bi bi-arrow-right ms-1"></i>
                     </a>
                 </div>
-
             </div>
         </section>
 
         <div id="footer-placeholder"></div>
-
-
     </div>
+
     <div id="player-simulado" class="fixed-bottom bg-dark border-top border-secondary p-3 d-none shadow-lg" style="background-color: rgba(15, 5, 25, 0.95) !important; backdrop-filter: blur(15px); z-index: 1050;">
         <div class="container-fluid">
             <div class="row align-items-center">
-
                 <div class="col-4 d-flex align-items-center">
                     <img id="player-img" src="" class="rounded-2 me-3" style="width: 50px; height: 50px; object-fit: cover;">
                     <div>
@@ -175,32 +170,15 @@
                         <div class="progress-bar bg-secondary" style="width: 70%"></div>
                     </div>
                 </div>
+            </div>
+        </div>
+    </div>
 
-            </div>
-        </div>
-    </div>
-        <div class="modal fade" id="modalLogin" tabindex="-1" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered">
-            <div class="modal-content bg-dark text-white p-4">
-                <h5>Debes iniciar sesión</h5>
-                <p>Para hacer esto necesitas una cuenta.</p>
-                <a href="/login.html" class="btn btn-primary">Ir a Iniciar Sesión</a>
-                <button type="button" class="btn btn-outline-light w-100" data-bs-dismiss="modal">Seguir explorando</button>
-            </div>
-        </div>
-    </div>
+  
 
     <script src="js/global.js"></script>
     <script src="js/index.js"></script>
-    <script>
-    const modalLogin = new bootstrap.Modal(document.getElementById('modalLogin'));
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 
-    document.querySelectorAll('.btn-reproducir, .btn-playlist').forEach(btn => {
-        btn.addEventListener('click', (e) => {
-            e.preventDefault();
-            modalLogin.show();
-        });
-    });
-</script>
 </body>
 </html>

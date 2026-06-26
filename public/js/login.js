@@ -5,20 +5,17 @@ document.addEventListener('DOMContentLoaded', () => {
     if (!formulario) return;
 
     formulario.addEventListener('submit', async (e) => {
-        // 1. Evitamos el comportamiento por defecto (que recargue la página)
         e.preventDefault();
 
         const username = document.getElementById('username').value.trim();
         const password = document.getElementById('password').value;
 
-        // Limpiar errores previos
         if (mensajeError) {
             mensajeError.textContent = '';
             mensajeError.classList.add('d-none');
         }
 
         try {
-            // 2. Enviamos los datos al servidor
             const respuesta = await fetch('/usuarios/login', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
@@ -26,11 +23,9 @@ document.addEventListener('DOMContentLoaded', () => {
             });
 
             if (respuesta.ok) {
-                // 3. Éxito: Guardamos el usuario y volvemos al Index
                 localStorage.setItem('usuario', username);
                 window.location.href = '/Index.html'; 
             } else {
-                // 4. Error: Mostramos el mensaje
                 const datos = await respuesta.json();
                 if (mensajeError) {
                     mensajeError.textContent = datos.error || 'Credenciales inválidas';
