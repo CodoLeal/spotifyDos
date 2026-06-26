@@ -24,7 +24,7 @@ conexión a BD y ejecución) garantizando el funcionamiento del proyecto desde c
 
 2. Descripcion del Proyecto:
 
-Spotify2(? es una aplicación web perteneciente al area tematica de Entretenimiento (Musica). 
+Spotify2 es una aplicación web perteneciente al area tematica de Entretenimiento Musica. 
 El sistema resuelve la necesidad de gestionar y presentar un catálogo musical digital de forma eficiente pues
 ofrece a los visitantes una vista publica para descubrir albumes recomendados y proporciona al personal de la empresa una
 interfaz de administracion comoda y eficiente para sus tareas diarias.
