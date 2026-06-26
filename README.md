@@ -1,32 +1,3 @@
-
-
-Bárbara Granifo
-Qué hice exactamente: Me encargué de diseñar y programar todo el login y definir la estética visual del sitio.
-
-Frontend: Armé el diseño (public/login.html) usando Bootstrap para que sea responsivo, ocupando sus filas y columnas para que todo quede bien centrado.
-
-Diseño Personalizado: Para cambiar el color verde de Spotify, creé un archivo CSS externo (public/css/styles.css) para darle un estilo diferente. Cambié los botones por degradados y configuré los cuadros de texto para que brillen al hacer clic en ellos.
-
-Validación en el login: Programé la lógica del formulario (public/js/login.js). Si el usuario se equivoca en la clave o ingresa un usuario que no existe, aparece una alerta roja ahí mismo avisando del error sin recargar la página. Si todo está bien, lo manda altiro al panel de control.
-
-Backend y Base de Datos: Configuré las rutas (routes/usuarios.js) y el controlador (controllers/auth.controller.js) en el servidor. Programé la lógica para recibir los datos del login, revisar en MySQL si el usuario y la contraseña son correctos, y avisarle a la pantalla si da el acceso o no.
-
-
-
-
-
-
-
-
-
-
-
-Ahora mismo no hay nada hecho, tenemos que repartirnos los roles.
-El proyecto ya está inicializado con [npm init -y]
-El proyecto ya tiene integrado express [npm install express]
-El proyecto ya tiene integrado mysql2 [npm install mysql2]
-
-
 1. Integrantes del Grupo:
 
 Martin Hormazabal (Backend & DB Lead): Responsable de la inicialización del proyecto y configuración central del servidor (server.js) y la base de datos (config/db.js).
@@ -36,15 +7,15 @@ y protegiendo el acceso al panel mediante middlewares de sesión. Administró el
 
 Vicente Gonzalez (Controladores & CRUD): Encargado de estructurar las rutas del administrador y programar la lógica del negocio en el backend (controllers/cancionController.js), 
 creando los métodos completos para leer, crear, actualizar y eliminar canciones. 
-Desarrolló y estructuró la vista del Panel de Administración (views/|||||aqui va la pagina de administracion|||||), 
+Desarrolló y estructuró la vista del Panel de Administración (public/admin), 
 conectando exitosamente los formularios HTML con los métodos del controlador para reflejar los cambios directamente en phpMyAdmin.
 
-Barbara Granifo (Autenticación & Frontend JS): Desarrolló la estructura visual (Bootstrap) y la lógica de enrutamiento para el sistema de inicio de sesión (controllers/usuarioController.js).
-Responsable de toda la interactividad y seguridad del lado del cliente, creando el script central (|||||aqui va el archivo js central||||) 
+Barbara Granifo (Autenticación & Frontend JS): Desarrolló la estructura visual (Bootstrap) y la lógica de enrutamiento para el sistema de inicio de sesión (controllers/usuarioController.js(?????????).
+Responsable de toda la interactividad y seguridad del lado del cliente, creando el script central
 para validar los formularios de login y del CRUD del panel,
 evitando el envío de campos vacíos y programando alertas dinámicas de confirmación para la eliminación de registros.
 
-Allan Arrey (Vista Pública & Docs): Desarrolló la Landing Page pública o vista de inicio (views/index.html) utilizando Bootstrap, 
+Allan Arrey (Vista Pública & Docs): Desarrolló la Landing Page pública o vista de inicio (public/index.html) utilizando Bootstrap, 
 implementando el diseño responsivo, la barra de navegación y el botón de redirección al Login.
 Fue responsable de redactar íntegramente la documentación del sistema (README.md) 
 y de realizar las pruebas de control de calidad del despliegue (clonación, instalación de dependencias, 
@@ -106,7 +77,7 @@ Nombre de la base de datos: spotify2_db
 
 Usuario: root
 
-Contraseña: (vacia no nada)
+Contraseña: (vacia)
 
 
 
@@ -131,10 +102,8 @@ El sistema sigue estrictamente el patrón de arquitectura MVC. A continuación, 
 
 /model/: Archivos encargados de la interaccion directa con MySQL y la ejecucion de consultas SQL.
 
-/public/: Directorio de recursos estáticos accesibles por el navegador (imágenes, CSS y archivos como app.js para el frontend).
-
-/views/: Archivos de interfaz grafica y plantillas HTML, incluyendo la vista publica (index.html) y el panel de administracion.
+/public/: Directorio de recursos estáticos accesibles por el navegador y LandingPage (imágenes, CSS y archivos como app.js para el frontend y index.html).
 
 server.js: Archivo principal ubicado en la raiz del proyecto que inicializa y levanta el servidor web.
 
-database.sql: Script de base de datos listo para importar en phpMyAdmin.
+db.sql: Script de base de datos listo para importar en phpMyAdmin.

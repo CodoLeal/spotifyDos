@@ -1,0 +1,98 @@
+body, .navbar, .card, footer, h1, h2, h5, p, a, span, i {
+    transition: background-color 0.4s ease, background 0.4s ease, color 0.4s ease, border 0.4s ease !important;
+}
+
+body {
+    font-family: mulish;
+    background: radial-gradient(circle at top left, #1f132b 0%, #0a0a0a 80%);
+}
+
+    body, .navbar, .card, footer, h1, h2, h5, p, a, span, i {
+        transition: background-color 0.2s ease, background 0.4s ease, color 0.2s ease, border 0.4s ease !important;
+    }
+
+.navbar-nav .nav-link {
+    padding: 8px 24px !important;
+    border-radius: 12px;
+    transition: 0.3s ease;
+}
+
+    .navbar-nav .nav-link:hover {
+        background-color: rgba(255, 255, 255, 0.1);
+    }
+
+.btn-primary {
+    background-color: #7C3AED;
+    border: none;
+}
+
+    .btn-primary:hover {
+        background-color: #6b21a8;
+        box-shadow: 0 1px 12px rgba(255, 0, 127, 0.6);
+    }
+
+.glowbacan {
+    color: #ff007f !important;
+    text-shadow: 0 0 10px rgba(255, 0, 127, 0.5);
+}
+
+/* el css pero pa cndo este en modo claro*/
+[data-bs-theme="light"] body {
+    background: radial-gradient(circle at top left, #ebd4ff 0%, #f4f4f9 100%);
+}
+
+[data-bs-theme="light"] .navbar,
+[data-bs-theme="light"] footer,
+[data-bs-theme="light"] footer.bg-dark {
+    background-color: rgba(255, 255, 255, 0.95) !important;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+}
+
+    [data-bs-theme="light"] h1,
+    [data-bs-theme="light"] h2,
+    [data-bs-theme="light"] h5,
+    [data-bs-theme="light"] p,
+    [data-bs-theme="light"] span:not(.badge):not(.glowbacan),
+    [data-bs-theme="light"] i,
+    [data-bs-theme="light"] footer strong {
+        color: #2b2b2b !important;
+    }
+
+[data-bs-theme="light"] .glowbacan {
+    color: #ff007f !important;
+    text-shadow: 0 0 12px rgba(255, 0, 127, 0.7);
+}
+
+[data-bs-theme="light"] .btn i,
+[data-bs-theme="light"] .btn span {
+    color: inherit !important;
+}
+
+[data-bs-theme="light"] .btn-outline-light {
+    color: #2b2b2b !important;
+    border-color: #2b2b2b !important;
+}
+
+    [data-bs-theme="light"] .btn-outline-light:hover {
+        background-color: #2b2b2b !important;
+        color: #ffffff !important;
+    }
+
+[data-bs-theme="light"] .navbar-nav .nav-link,
+[data-bs-theme="light"] .navbar-brand {
+    color: #2b2b2b !important;
+}
+
+    [data-bs-theme="light"] .navbar-nav .nav-link:hover {
+        background-color: rgba(0, 0, 0, 0.08);
+    }
+
+[data-bs-theme="light"] .card {
+    background-color: rgba(255, 255, 255, 0.95);
+    border: 1px solid #d1cdd6;
+}
+
+    [data-bs-theme="light"] .card .text-secondary,
+    [data-bs-theme="light"] .lead {
+        color: #5a5a66 !important;
+    }

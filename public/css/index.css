@@ -1,0 +1,27 @@
+.navbar,
+footer.bg-dark {
+    background-color: rgba(10, 5, 15, 0.90);
+    backdrop-filter: blur(12px);
+}
+
+.contenido-principal {
+    margin-top: 70px;
+}
+
+.card-img-top {
+    height: 180px;
+    object-fit: cover;
+}
+
+.card {
+    transition: 0.3s;
+    background-color: rgba(30, 20, 43, 0.8);
+}
+
+    .card:hover {
+        translate: 0 -8px;
+    }
+
+.btn-outline-light:hover {
+    box-shadow: 0 1px 10px rgb(190, 190, 190);
+}
