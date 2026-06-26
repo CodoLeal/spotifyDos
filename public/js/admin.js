@@ -1,26 +1,23 @@
-// public/js/admin.js
-
-// Ruta base ajustada según tu app.use('/canciones', cancionRoutes) en server.js
 const API_URL = '/canciones'; 
+const API_USUARIOS_URL = '/usuarios';
 let listaCanciones = [];
 
-// Instanciamos los modales de Bootstrap para manejarlos limpiamente desde JS
 const modalAgregar = new bootstrap.Modal(document.getElementById('modalAgregar'));
 const modalEditar = new bootstrap.Modal(document.getElementById('modalEditar'));
+const modalAgregarUsuario = new bootstrap.Modal(document.getElementById('modalAgregarUsuario'));
 
 
-// ─── 1. CAPTURA Y DELEGACIÓN DE EVENTOS ───
+document.addEventListener('DOMContentLoaded', () => {
+    cargarCanciones();
+    cargarUsuarios();
+});
 
-// Escucha cuando el DOM está completamente cargado para listar las canciones
-document.addEventListener('DOMContentLoaded', cargarCanciones);
-
-// Escucha el envío del formulario para agregar canciones
 document.getElementById('form-agregar').addEventListener('submit', guardarNuevaCancion);
 
-// Escucha el envío del formulario para editar canciones
 document.getElementById('form-editar').addEventListener('submit', actualizarCancion);
 
-// Delegación de eventos en el tbody (captura clicks de Editar y Eliminar dinámicamente)
+document.getElementById('form-agregar-usuario').addEventListener('submit', guardarNuevoUsuario);
+
 document.getElementById('tabla-canciones').addEventListener('click', (e) => {
     const botonEditar = e.target.closest('.btn-accion-editar');
     const botonEliminar = e.target.closest('.btn-accion-eliminar');
@@ -37,9 +34,6 @@ document.getElementById('tabla-canciones').addEventListener('click', (e) => {
 });
 
 
-// ─── 2. FUNCIONES OPERATIVAS (FETCH) ───
-
-// [GET] Obtener y renderizar todas las canciones
 async function cargarCanciones() {
     try {
         const res = await fetch(API_URL);
@@ -80,12 +74,10 @@ async function cargarCanciones() {
     }
 }
 
-// [POST] Insertar nueva canción
 async function guardarNuevaCancion(e) {
     e.preventDefault();
     const formData = new FormData(e.target);
     
-    // Objeto con los 5 campos requeridos por tu cancionController.js
     const nuevaCancion = {
         titulo: formData.get('titulo'),
         artista: formData.get('artista'),
@@ -102,9 +94,9 @@ async function guardarNuevaCancion(e) {
         });
 
         if (res.status === 201) {
-            modalAgregar.hide(); // Cerrar modal
-            e.target.reset();    // Limpiar formulario
-            cargarCanciones();   // Refrescar tabla desde BD
+            modalAgregar.hide();
+            e.target.reset();
+            cargarCanciones();   
         } else {
             const data = await res.json();
             alert('Error: ' + data.error);
@@ -115,7 +107,6 @@ async function guardarNuevaCancion(e) {
     }
 }
 
-// Rellenar el formulario del modal de edición con los datos existentes
 function prepararEditar(id) {
     const cancion = listaCanciones.find(c => c.id === id);
     if (!cancion) return;
@@ -127,10 +118,9 @@ function prepararEditar(id) {
     document.getElementById('editar-duracion').value = cancion.duracion;
     document.getElementById('editar-genero').value = cancion.genero;
 
-    modalEditar.show(); // Abrir modal de edición
+    modalEditar.show();
 }
 
-// [PUT] Actualizar canción por ID
 async function actualizarCancion(e) {
     e.preventDefault();
     const id = document.getElementById('editar-id').value;
@@ -153,7 +143,7 @@ async function actualizarCancion(e) {
 
         if (res.ok) {
             modalEditar.hide();
-            cargarCanciones(); // Refrescar vista
+            cargarCanciones();
         } else {
             const data = await res.json();
             alert('Error al modificar: ' + data.error);
@@ -164,14 +154,13 @@ async function actualizarCancion(e) {
     }
 }
 
-// [DELETE] Remover canción por ID
 async function eliminarCancion(id) {
     if (!confirm('¿Seguro que deseas remover esta canción de la base de datos?')) return;
 
     try {
         const res = await fetch(`${API_URL}/${id}`, { method: 'DELETE' });
         if (res.ok) {
-            cargarCanciones(); // Refrescar vista tras eliminar
+            cargarCanciones();
         } else {
             const data = await res.json();
             alert('Error: ' + data.error);
@@ -179,5 +168,68 @@ async function eliminarCancion(id) {
     } catch (err) {
         console.error(err);
         alert('Error de red al intentar eliminar.');
+    }
+}
+
+async function cargarUsuarios() {
+    try {
+        const res = await fetch(API_USUARIOS_URL);
+        if (!res.ok) throw new Error('Error al obtener los usuarios');
+
+        const listaUsuarios = await res.json();
+        const tbody = document.getElementById('tabla-usuarios');
+        tbody.innerHTML = '';
+
+        if (listaUsuarios.length === 0) {
+            tbody.innerHTML = `<tr><td colspan="3" class="text-center text-secondary py-4">No hay usuarios registrados.</td></tr>`;
+            return;
+        }
+
+        listaUsuarios.forEach(u => {
+            tbody.innerHTML += `
+                <tr>
+                    <td class="text-secondary fw-bold">#${u.id}</td>
+                    <td class="text-white fw-bold">
+                        <i class="bi bi-person-fill me-2 text-secondary"></i>${u.username}
+                    </td>
+                    <td class="text-end">
+                        <span class="badge bg-dark border border-secondary text-secondary">Administrador</span>
+                    </td>
+                </tr>
+            `;
+        });
+    } catch (err) {
+        console.error(err);
+        alert('Error al conectar con el servidor para listar usuarios.');
+    }
+}
+
+async function guardarNuevoUsuario(e) {
+    e.preventDefault();
+    const formData = new FormData(e.target);
+    
+    const nuevoUsuario = {
+        username: formData.get('username'),
+        password: formData.get('password')
+    };
+
+    try {
+        const res = await fetch(API_USUARIOS_URL, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(nuevoUsuario)
+        });
+
+        if (res.status === 201) {
+            modalAgregarUsuario.hide();
+            e.target.reset();
+            cargarUsuarios();
+        } else {
+            const data = await res.json();
+            alert('Error: ' + (data.error || 'No se pudo crear el usuario.'));
+        }
+    } catch (err) {
+        console.error(err);
+        alert('Error de red al intentar guardar el usuario.');
     }
 }
