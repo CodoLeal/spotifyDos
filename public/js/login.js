@@ -1,44 +1,43 @@
+document.addEventListener('DOMContentLoaded', () => {
+    const formulario = document.getElementById('loginForm');
+    const mensajeError = document.getElementById('mensaje-error');
 
-const formulario = document.getElementById('loginForm');
-const inputUsername = document.getElementById('username');
-const inputPassword = document.getElementById('password');
-const mensajeError = document.getElementById('mensaje-error');
+    if (!formulario) return;
 
+    formulario.addEventListener('submit', async (e) => {
+        e.preventDefault();
 
-const realizarLogin = async (e) => {
-    e.preventDefault();
+        const username = document.getElementById('username').value.trim();
+        const password = document.getElementById('password').value;
 
-    mensajeError.textContent = '';
-    mensajeError.classList.add('d-none');
-
-    const username = inputUsername.value.trim();
-    const password = inputPassword.value;
-
-    if (!username || !password) {
-        mensajeError.textContent = 'Completa todos los campos.';
-        mensajeError.classList.remove('d-none');
-        return;
-    }
-
-    try {
-        const respuesta = await fetch('/usuarios/login', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ username, password })
-        });
-
-        if (respuesta.ok) {
-            window.location.href = '/Index.html';
-        } else {
-            const datos = await respuesta.json();
-            mensajeError.textContent = datos.error || 'Credenciales inválidas';
-            mensajeError.classList.remove('d-none');
+        if (mensajeError) {
+            mensajeError.textContent = '';
+            mensajeError.classList.add('d-none');
         }
 
-    } catch (err) {
-        mensajeError.textContent = `Error al conectar: ${err.message}`;
-        mensajeError.classList.remove('d-none');
-    }
-};
+        try {
+            const respuesta = await fetch('/usuarios/login', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ username, password })
+            });
 
-formulario.addEventListener('submit', realizarLogin);
+            if (respuesta.ok) {
+                localStorage.setItem('usuario', username);
+                window.location.href = '/Index.html'; 
+            } else {
+                const datos = await respuesta.json();
+                if (mensajeError) {
+                    mensajeError.textContent = datos.error || 'Credenciales inválidas';
+                    mensajeError.classList.remove('d-none');
+                }
+            }
+        } catch (err) {
+            console.error("Error:", err);
+            if (mensajeError) {
+                mensajeError.textContent = 'Error de conexión con el servidor.';
+                mensajeError.classList.remove('d-none');
+            }
+        }
+    });
+});

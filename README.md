@@ -1,3 +1,10 @@
+
+Ahora mismo no hay nada hecho, tenemos que repartirnos los roles.
+El proyecto ya está inicializado con [npm init -y]
+El proyecto ya tiene integrado express [npm install express]
+El proyecto ya tiene integrado mysql2 [npm install mysql2]
+
+
 1. Integrantes del Grupo:
 
 Martin Hormazabal (Backend & DB Lead): Responsable de la inicialización del proyecto y configuración central del servidor (server.js) y la base de datos (config/db.js).
@@ -10,10 +17,7 @@ creando los métodos completos para leer, crear, actualizar y eliminar canciones
 Desarrolló y estructuró la vista del Panel de Administración (public/admin), 
 conectando exitosamente los formularios HTML con los métodos del controlador para reflejar los cambios directamente en phpMyAdmin.
 
-Barbara Granifo (Autenticación & Frontend JS): Desarrolló la estructura visual (Bootstrap) y la lógica de enrutamiento para el sistema de inicio de sesión (controllers/usuarioController.js(?????????).
-Responsable de toda la interactividad y seguridad del lado del cliente, creando el script central
-para validar los formularios de login y del CRUD del panel,
-evitando el envío de campos vacíos y programando alertas dinámicas de confirmación para la eliminación de registros.
+Bárbara Granifo (Autenticación & Frontend JS): Diseñó la interfaz responsiva con Bootstrap y la estética del sitio mediante CSS personalizado (public/css/styles.css). Programó la lógica del servidor para el inicio de sesión (routes/usuarios.js y controllers/auth.controller.js) conectada a MySQL. Además, desarrolló el script central (public/js/login.js) para validar campos vacíos y desplegar alertas de error en pantalla.
 
 Allan Arrey (Vista Pública & Docs): Desarrolló la Landing Page pública o vista de inicio (public/index.html) utilizando Bootstrap, 
 implementando el diseño responsivo, la barra de navegación y el botón de redirección al Login.
@@ -24,7 +28,7 @@ conexión a BD y ejecución) garantizando el funcionamiento del proyecto desde c
 
 2. Descripcion del Proyecto:
 
-Spotify2 es una aplicación web perteneciente al area tematica de Entretenimiento Musica. 
+Spotify2 es una aplicación web perteneciente al area tematica de Entretenimiento (Musica). 
 El sistema resuelve la necesidad de gestionar y presentar un catálogo musical digital de forma eficiente pues
 ofrece a los visitantes una vista publica para descubrir albumes recomendados y proporciona al personal de la empresa una
 interfaz de administracion comoda y eficiente para sus tareas diarias.
