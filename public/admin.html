@@ -12,13 +12,12 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Mulish:ital,wght@0,700;1,700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/adminStyle.css">
 
     <link rel="stylesheet" href="css/global.css">
     <link rel="stylesheet" href="css/admin.css">
 </head>
-
 <body>
-
     <nav class="navbar fixed-top px-4">
         <a class="navbar-brand text-white fw-bold" href="/">
             <i class="bi bi-music-note-beamed me-1"></i>Spotify<span class="glowbacan">2</span>
@@ -34,35 +33,90 @@
     </nav>
 
     <div class="container contenido-principal">
-        <div class="d-flex justify-content-between align-items-center mb-4">
-            <div>
-                <h2 class="fw-bold text-white mb-1">Gestión del Catálogo</h2>
-                <p class="text-secondary mb-0" style="font-size: 0.9rem;">Agrega, edita o elimina las canciones del sistema.</p>
+        <!-- Pestañas de Navegación -->
+        <ul class="nav nav-pills mb-4 justify-content-center" id="adminTabs" role="tablist">
+            <li class="nav-item" role="presentation">
+                <button class="nav-link active rounded-pill px-4 me-2" id="canciones-tab" data-bs-toggle="pill" data-bs-target="#pane-canciones" type="button" role="tab" aria-controls="pane-canciones" aria-selected="true">
+                    <i class="bi bi-music-note-list me-2"></i>Canciones
+                </button>
+            </li>
+            <li class="nav-item" role="presentation">
+                <button class="nav-link rounded-pill px-4" id="usuarios-tab" data-bs-toggle="pill" data-bs-target="#pane-usuarios" type="button" role="tab" aria-controls="pane-usuarios" aria-selected="false">
+                    <i class="bi bi-people-fill me-2"></i>Usuarios
+                </button>
+            </li>
+        </ul>
+
+        <div class="tab-content" id="adminTabsContent">
+            <!-- PESTAÑA CANCIONES -->
+            <div class="tab-pane fade show active" id="pane-canciones" role="tabpanel" aria-labelledby="canciones-tab">
+                <div class="d-flex justify-content-between align-items-center mb-4">
+                    <div>
+                        <h2 class="fw-bold text-white mb-1">Gestión del Catálogo</h2>
+                        <p class="text-secondary mb-0" style="font-size: 0.9rem;">Agrega, edita o elimina las canciones del sistema.</p>
+                    </div>
+                    <button class="btn btn-spotify px-4 py-2" data-bs-toggle="modal" data-bs-target="#modalAgregar">
+                        <i class="bi bi-plus-circle-fill me-2"></i>Añadir Canción
+                    </button>
+                </div>
+
+                <div class="card card-admin p-4 shadow-lg mb-5">
+                    <div class="table-responsive">
+                        <table class="table align-middle mb-0">
+                            <thead>
+                                <tr class="text-secondary" style="font-size: 0.9rem;">
+                                    <th>ID</th>
+                                    <th>Título</th>
+                                    <th>Artista</th>
+                                    <th>Álbum</th>
+                                    <th>Duración</th>
+                                    <th>Género</th>
+                                    <th class="text-end">Acciones</th>
+                                </tr>
+                            </thead>
+                            <tbody id="tabla-canciones" style="font-size: 0.95rem;">
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
             </div>
-            <button class="btn btn-spotify px-4 py-2" data-bs-toggle="modal" data-bs-target="#modalAgregar">
-                <i class="bi bi-plus-circle-fill me-2"></i>Añadir Canción
-            </button>
+
+            <div class="tab-pane fade" id="pane-usuarios" role="tabpanel" aria-labelledby="usuarios-tab">
+                <div class="d-flex justify-content-between align-items-center mb-4">
+                    <div>
+                        <h2 class="fw-bold text-white mb-1">Gestión de Usuarios</h2>
+                        <p class="text-secondary mb-0" style="font-size: 0.9rem;">Administra las cuentas de usuario y sus credenciales de acceso.</p>
+                    </div>
+                    <button class="btn btn-spotify px-4 py-2" data-bs-toggle="modal" data-bs-target="#modalAgregarUsuario">
+                        <i class="bi bi-person-plus-fill me-2"></i>Añadir Usuario
+                    </button>
+                </div>
+
+                <div class="card card-admin p-4 shadow-lg mb-5">
+                    <div class="table-responsive">
+                        <table class="table align-middle mb-0">
+                            <thead>
+                                <tr class="text-secondary" style="font-size: 0.9rem;">
+                                    <th>ID</th>
+                                    <th>Nombre de Usuario</th>
+                                    <th class="text-end">Rol</th>
+                                </tr>
+                            </thead>
+                            <tbody id="tabla-usuarios" style="font-size: 0.95rem;">
+                                <!-- Se llenará dinámicamente -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
         </div>
 
-        <div class="card card-admin p-4 shadow-lg mb-5">
-            <div class="table-responsive">
-                <table class="table align-middle mb-0">
-                    <thead>
-                        <tr class="text-secondary" style="font-size: 0.9rem;">
-                            <th>ID</th>
-                            <th>Título</th>
-                            <th>Artista</th>
-                            <th>Álbum</th>
-                            <th>Duración</th>
-                            <th>Género</th>
-                            <th class="text-end">Acciones</th>
-                        </tr>
-                    </thead>
-                    <tbody id="tabla-canciones" style="font-size: 0.95rem;">
-                    </tbody>
-                </table>
-            </div>
-        </div>
+        <footer class="text-white text-center py-3 rounded-4 mb-4">
+            <p class="mb-0 text-secondary" style="font-size: 0.85rem;">
+                <i class="bi bi-music-note-beamed me-1"></i>
+                <strong class="text-white">Spotify 2</strong> - NovaDev 2026
+            </p>
+        </footer>
     </div>
 
     <div class="modal fade" id="modalAgregar" tabindex="-1" aria-hidden="true">
@@ -148,7 +202,32 @@
         </div>
     </div>
 
-    <div id="footer-placeholder"></div>
+    <div class="modal fade" id="modalAgregarUsuario" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title fw-bold"><i class="bi bi-person-plus-fill text-primary me-2"></i>Nuevo Usuario</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+                </div>
+                <form id="form-agregar-usuario">
+                    <div class="modal-body">
+                        <div class="mb-3">
+                            <label class="form-label">Nombre de Usuario</label>
+                            <input type="text" name="username" class="form-control" required autocomplete="off">
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Contraseña</label>
+                            <input type="password" name="password" class="form-control" required autocomplete="new-password">
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-outline-secondary rounded-pill px-4" data-bs-dismiss="modal">Cancelar</button>
+                        <button type="submit" class="btn btn-spotify px-4">Guardar Usuario</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 
